@@ -11,6 +11,7 @@ public class App {
         Vehicle v3 = new Vehicle(30, 1);
         Vehicle v4 = new Vehicle(30, 2);
         Vehicle v5 = new Vehicle(5, 2);
+        Vehicle v6 = new Vehicle(11, 2);
 
         highway.add(v1);
         highway.add(v2);
