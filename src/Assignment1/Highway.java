@@ -17,7 +17,8 @@ public class Highway implements Iterable<Vehicle> {
 
     // Contents of the Highway.
     private Set<Vehicle> contents;
-
+    private int countEast;
+    private int countWest;
     /**
      * Constructor that creates a new Highway.
      */
@@ -59,6 +60,11 @@ public class Highway implements Iterable<Vehicle> {
         if (!contents.contains(v)) {
 //            System.out.println("come add");
             contents.add(v);
+            if(v.getDirection()==1){
+                countEast++;
+            }else if(v.getDirection()==2){
+                countWest++;
+            }
             return true;
         } else {
             return false;
@@ -82,6 +88,11 @@ public class Highway implements Iterable<Vehicle> {
         // Your code goes here.  Remove the exception after you're done.
         if (contents.contains(v)) {
             contents.remove(v);
+            if(v.getDirection()==1){
+                countEast--;
+            }else if(v.getDirection()==2){
+                countWest--;
+            }
             return true;
         } else {
             return false;
@@ -96,12 +107,15 @@ public class Highway implements Iterable<Vehicle> {
      */
     public double getVelocityEastbound() {
         // Your code goes here.  Remove the exception after you're done.
-        double LowestEastSpeed= Double.MAX_VALUE;
+        if (this.numberVehiclesEastbound() == 0) {
+            return 0;
+        }
+        double LowestEastSpeed = Double.MAX_VALUE;
 
-        for(Vehicle v:contents){
-            if(v.getDirection()==1&&v.getVelocity()<LowestEastSpeed){
+        for (Vehicle v : contents) {
+            if (v.getDirection() == 1 && v.getVelocity() < LowestEastSpeed) {
 //                System.out.println("east come");
-                LowestEastSpeed=v.getVelocity();
+                LowestEastSpeed = v.getVelocity();
             }
         }
         return LowestEastSpeed;
@@ -114,12 +128,15 @@ public class Highway implements Iterable<Vehicle> {
      */
     public double getVelocityWestbound() {
         // Your code goes here.  Remove the exception after you're done.
-        double LowestWestSpeed= Double.MAX_VALUE;
+        if (this.numberVehiclesWestbound() == 0) {
+            return 0;
+        }
+        double LowestWestSpeed = Double.MAX_VALUE;
 
-        for(Vehicle v:contents){
-            if(v.getDirection()==2&&v.getVelocity()<LowestWestSpeed){
+        for (Vehicle v : contents) {
+            if (v.getDirection() == 2 && v.getVelocity() < LowestWestSpeed) {
 //                System.out.println("west come");
-                LowestWestSpeed=v.getVelocity();
+                LowestWestSpeed = v.getVelocity();
             }
         }
         return LowestWestSpeed;
@@ -132,13 +149,11 @@ public class Highway implements Iterable<Vehicle> {
      */
     public int numberVehiclesEastbound() {
         // Your code goes here.  Remove the exception after you're done.
-        int countEast=0;
-
-        for(Vehicle v:contents){
-            if(v.getDirection()==1){
-                countEast++;
-            }
-        }
+//        for (Vehicle v : contents) {
+//            if (v.getDirection() == 1) {
+//                countEast++;
+//            }
+//        }
         return countEast;
     }
 
@@ -149,13 +164,11 @@ public class Highway implements Iterable<Vehicle> {
      */
     public int numberVehiclesWestbound() {
         // Your code goes here.  Remove the exception after you're done.
-        int countWest=0;
-
-        for(Vehicle v:contents){
-            if(v.getDirection()==2){
-                countWest++;
-            }
-        }
+//        for (Vehicle v : contents) {
+//            if (v.getDirection() == 2) {
+//                countWest++;
+//            }
+//        }
         return countWest;
     }
 
@@ -170,9 +183,9 @@ public class Highway implements Iterable<Vehicle> {
      */
     public boolean contains(Vehicle v) {
         // Your code goes here.  Remove the exception after you're done.
-        if(contents.contains(v)){
+        if (contents.contains(v)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

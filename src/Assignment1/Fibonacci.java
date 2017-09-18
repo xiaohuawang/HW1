@@ -20,15 +20,6 @@ public class Fibonacci {
      * @return the <var>n</var>th term in the Fibonacci sequence
      * @throws IllegalArgumentException if <code>n</code> is not a nonnegative number
      */
-//    public int getFibTerm(int n) {
-//        if (n <= 0) {
-//            throw new IllegalArgumentException(n + " is negative");
-//        } else if (n <= 2) {
-//            return 1;
-//        } else {
-//            return getFibTerm(n - 1) + getFibTerm(n - 2);
-//        }
-//    }
 
     public int getFibTerm(int n) {
         if (n < 0) {

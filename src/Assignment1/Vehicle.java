@@ -18,6 +18,12 @@ public class Vehicle {
      * @param direction Direction of the new object, where 1 represents eastbound direction, and 2 westbound direction.
      */
     public Vehicle(double velocity, int direction) {
+        if(velocity<0){
+            throw new IllegalArgumentException("velocity should be positive number");
+        }
+        if(direction!=1&&direction!=2){
+            throw new IllegalArgumentException("direction should be 1 or 2 which represent east or west");
+        }
         this.velocity = velocity;
         this.direction = direction;
     }
@@ -28,6 +34,10 @@ public class Vehicle {
      */
     public double getVelocity() {
         return velocity;
+    }
+
+    public void setVelocity(double velocity) {
+        this.velocity=velocity;
     }
 
     /**

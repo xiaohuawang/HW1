@@ -11,23 +11,26 @@ public class VehicleTest {
 
     private static Vehicle vehicle = null;
 
-    @Before
-    public void setUp() throws Exception {
+    @Test(expected=IllegalArgumentException.class)
+    public void expectedVelocityIllegalArgumentException() {
+        vehicle = new Vehicle(-10, 1);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void expectedDirectionIllegalArgumentException() {
+        vehicle = new Vehicle(10, 3);
+    }
+
+    @Test
+    public void getVelocity() throws Exception {
         vehicle = new Vehicle(10, 1);
-    }
-
-//    @After
-//    public void tearDown() throws Exception {
-//    }
-
-    @Test
-    public void getVelocity() throws Exception{
-        assertEquals(10, vehicle.getVelocity(),0);
+        assertEquals(10, vehicle.getVelocity(), 0);
     }
 
     @Test
-    public void getDirection() throws Exception{
-        assertEquals(1, vehicle.getDirection(),0);
+    public void getDirection() throws Exception {
+        vehicle = new Vehicle(10, 1);
+        assertEquals(1, vehicle.getDirection(), 0);
     }
 
 }

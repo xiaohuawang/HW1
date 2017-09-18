@@ -5,13 +5,19 @@ import java.util.Random;
 //RandomHomework selects a random course name to display to the user.//
 public class RandomHomework {
 
+
+    /**
+     * Uses a RandomHomework object to print
+     * a random course name to the console.
+     */
     public static void main(String[] args) {
         RandomHomework randomHomework = new RandomHomework();
         System.out.println(randomHomework.getCourse());
-//        System.out.println("end");
     }
 
-    //use random number to pick one course from the four courses and return it.
+    /**
+     * @return a random course name from a list of four possible courses.
+     */
     public String getCourse() {
 
         String[] course = new String[4];
